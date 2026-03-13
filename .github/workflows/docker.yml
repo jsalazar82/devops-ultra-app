@@ -24,7 +24,7 @@ jobs:
 
     - name: Build image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-ultra-app:latest .
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-ultra-app:latest ./app
 
     - name: Push image
       run: |
