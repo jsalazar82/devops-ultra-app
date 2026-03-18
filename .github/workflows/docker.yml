@@ -29,3 +29,13 @@ jobs:
     - name: Push image
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/devops-ultra-app:latest
+
+    - name: Deploy en EC2
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user
+            ./update-app.sh    
